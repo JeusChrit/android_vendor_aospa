@@ -43,6 +43,7 @@ PRODUCT_MAKEFILES += \
     $(LOCAL_DIR)/oneplus8pro/aospa_oneplus8pro.mk \
     $(LOCAL_DIR)/oneplus8t/aospa_oneplus8t.mk \
     $(LOCAL_DIR)/oneplus9r/aospa_oneplus9r.mk \
+    $(LOCAL_DIR)/opkona/aospa_opkona.mk \
     $(LOCAL_DIR)/oriole/aospa_oriole.mk \
     $(LOCAL_DIR)/panther/aospa_panther.mk \
     $(LOCAL_DIR)/phoenix/aospa_phoenix.mk \
@@ -89,6 +90,8 @@ COMMON_LUNCH_CHOICES += \
     aospa_oneplus8t-user \
     aospa_oneplus9r-userdebug \
     aospa_oneplus9r-user \
+    aospa_opkona-userdebug \
+    aospa_opkona-user \
     aospa_oriole-userdebug \
     aospa_panther-userdebug \
     aospa_phoenix-userdebug \
