@@ -1,5 +1,4 @@
-#
-# Copyright (C) 2023 Neoteric OS
+# Copyright (C) 2023 Paranoid Android
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,22 +11,35 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
+ifeq (aospa_opkona,$(TARGET_PRODUCT))
 
 # Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# Inherit from opkona device
-$(call inherit-product, device/oneplus/opkona/device.mk)
+# Inherit from the custom device configuration.
+$(call inherit-product, device/oneplus/sm8250/device.mk)
 
-# Inherit from the Neoteric configuration.
-$(call inherit-product, vendor/neoteric/target/product/neoteric-target.mk)
+# Inherit from the AOSPA configuration.
+$(call inherit-product, vendor/aospa/target/product/aospa-target.mk)
 
-PRODUCT_NAME := opkona
+PRODUCT_BRAND := OnePlus
 PRODUCT_DEVICE := opkona
 PRODUCT_MANUFACTURER := OnePlus
-PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := kona
+PRODUCT_MODEL := KB2003
+PRODUCT_NAME := aospa_opkona
+
+PRODUCT_SYSTEM_NAME := OnePlus8T
+PRODUCT_SYSTEM_DEVICE := OnePlus8T
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE=$(PRODUCT_SYSTEM_DEVICE) \
+    TARGET_PRODUCT=$(PRODUCT_SYSTEM_NAME)
 
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
+
+# Boot animation resolution.
+TARGET_BOOT_ANIMATION_RES := 1080
+
+endif
