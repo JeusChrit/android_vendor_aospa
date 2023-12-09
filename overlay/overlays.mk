@@ -23,6 +23,7 @@ PRODUCT_PACKAGES += \
     AOSPAWifiOverlay \
     FontGoogleSansOverlay \
     FontGoogleSansLatoOverlay \
+    FontGoogleSansRobotoOverlay \
     FontHarmonySansOverlay \
     FontInterOverlay \
     FontMiLanProOverlay \
