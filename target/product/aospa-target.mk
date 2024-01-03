@@ -26,6 +26,9 @@ PRODUCT_PACKAGES += \
 # AOSPA Version.
 $(call inherit-product, vendor/aospa/target/product/version.mk)
 
+# AOSPA private configuration - optional.
+$(call inherit-product-if-exists, vendor/aospa-priv/target/product/aospa-priv-target.mk)
+
 # APNs
 ifneq ($(TARGET_NO_TELEPHONY), true)
 PRODUCT_COPY_FILES += \
@@ -57,6 +60,7 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 DONT_DEXPREOPT_PREBUILTS := true
 
 PRODUCT_DEXPREOPT_SPEED_APPS += \
+    Launcher3QuickStep \
     ParanoidSystemUI
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -65,8 +69,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Display
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
     debug.sf.frame_rate_multiple_threshold=60 \
+<<<<<<< HEAD
     ro.launcher.blur.appLaunch=0 \
     ro.sf.use_latest_hwc_vsync_period=1
+=======
+    ro.surface_flinger.enable_frame_rate_override=false
+>>>>>>> upstream/uvite
 
 # EGL - Blobcache configuration
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
@@ -151,11 +159,6 @@ PRODUCT_PACKAGES += \
     ParanoidSystemUI \
     ParanoidThemePicker
 
-# Paranoid Hub (OTA)
-ifneq ($(filter STABLE BETA,$(AOSPA_BUILDTYPE)),)
-PRODUCT_PACKAGES += ParanoidHub
-endif
-
 # Paranoid Sense
 PRODUCT_PACKAGES += \
     ParanoidSense
@@ -175,7 +178,7 @@ PRODUCT_COPY_FILES += \
 
 # Privapp-permissions
 PRODUCT_SYSTEM_EXT_PROPERTIES += \
-    ro.control_privapp_permissions?=enforce
+    ro.control_privapp_permissions?=log
 
 # Protobuf - Workaround for prebuilt Qualcomm HAL
 PRODUCT_PACKAGES += \
@@ -265,6 +268,10 @@ PRODUCT_PACKAGES += \
     libtextclassifier_annotator_universal_model \
     libtextclassifier_actions_suggestions_universal_model \
     libtextclassifier_lang_id_model
+
+# Volume panel dialog - SystemUI
+PRODUCT_SYSTEM_EXT_PROPERTIES += \
+    sys.fflag.override.settings_volume_panel_in_systemui=true
 
 # WiFi
 PRODUCT_PACKAGES += \
