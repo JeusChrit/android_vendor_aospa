@@ -100,10 +100,8 @@ PRODUCT_PACKAGES += \
 # Google - GMS, Pixel, and Mainline Modules
 $(call inherit-product, vendor/google/gms/config.mk)
 $(call inherit-product, vendor/google/pixel/config.mk)
-ifneq ($(TARGET_FLATTEN_APEX), true)
+ifneq ($(TARGET_EXCLUDE_GMODULES), true)
 $(call inherit-product-if-exists, vendor/google/modules/build/mainline_modules.mk)
-else
-$(call inherit-product-if-exists, vendor/google/modules/build/mainline_modules_flatten_apex.mk)
 endif
 
 # HIDL
@@ -198,10 +196,6 @@ PRODUCT_PACKAGES += \
 
 # Qualcomm Common
 $(call inherit-product, device/qcom/common/common.mk)
-
-# Repainter (kdrag0n)
-PRODUCT_PACKAGES += \
-    RepainterServicePriv
 
 # Rescue Party
 # Disable RescueParty due to high risk of data loss
