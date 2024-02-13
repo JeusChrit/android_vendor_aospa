@@ -12,31 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq (aospa_lunaa,$(TARGET_PRODUCT))
+ifeq (aospa_marble,$(TARGET_PRODUCT))
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
 # Inherit from the custom device configuration.
-$(call inherit-product, device/realme/lunaa/device.mk)
+$(call inherit-product, device/xiaomi/marble/device.mk)
 
 # Inherit from the AOSPA configuration.
 $(call inherit-product, vendor/aospa/target/product/aospa-target.mk)
 
-PRODUCT_BRAND := realme
-PRODUCT_DEVICE := lunaa
-PRODUCT_MANUFACTURER := realme
-PRODUCT_MODEL := RMX3360
-PRODUCT_NAME := aospa_lunaa
+PRODUCT_BRAND := POCO
+PRODUCT_DEVICE := marble
+PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_MODEL := 23049PCD8G
+PRODUCT_NAME := aospa_marble
 
-PRODUCT_SYSTEM_DEVICE := RE54ABL1
-PRODUCT_SYSTEM_NAME := RMX3360
-
-PRODUCT_GMS_CLIENTID_BASE := android-oppo
+PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    TARGET_DEVICE=$(PRODUCT_SYSTEM_DEVICE) \
-    TARGET_PRODUCT=$(PRODUCT_SYSTEM_NAME)
+    TARGET_PRODUCT=marble_global
+
+# Boot animation resolution.
+TARGET_BOOT_ANIMATION_RES := 1080
 
 endif
