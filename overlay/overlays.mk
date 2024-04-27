@@ -23,6 +23,7 @@ PRODUCT_PACKAGES += \
     AOSPASettingsProviderOverlay \
     AOSPASystemUIOverlay \
     FontGoogleSansOverlay \
+    FontGoogleSansRobotoOverlay \
     FontHarmonySansOverlay \
     FontInterOverlay \
     FontLinotteSourceOverlay \
